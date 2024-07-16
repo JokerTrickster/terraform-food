@@ -3,8 +3,12 @@ variable "environment" {
 }
 
 variable "cloudwatch_prefix" {
-  default     = ""
+  default     = "food-recommendation"
   description = "If you want to avoid cloudwatch collision or you don't want to merge all logs to one log group specify a prefix"
+}
+variable "project" {
+  description = "The name of the project"
+  default = "food-recommendation"
 }
 
 variable "cluster" {

@@ -22,12 +22,17 @@ module "ecs" {
 }
 
 resource "aws_key_pair" "ecs" {
-  key_name   = "ecs-key-${var.environment}"
+  key_name   = "ecs-key-${var.project}"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD6NDOEou6+NFfCVM7GP/TYxjzzngyc7aUCMdt+gnSSSvKM/IEU8pje9VVOcApeYM/uPSwN7Z71OyRLM2yvlW1oCYdnXHSe5lE49FdnHM/k+p/b+ysiKQzeGdCU6xrtpWBWwC4YC0Ap6BTse+VG+Hfoyy1tgHFsW+w94RW9qLD8rx0ot6zF9EqYQGlbch1FGEoouKOIzmbuRhXLRS2jUPvNUGuiLnyi1lsPLemlb1A+sUREOREX7ePB4pGg41ZNbiKWAI+9eGI+jkbG0qV9oMOlOLhBGFo/x4jb1wYLHMHl9+D3JdUV2QgZ6PYBRl64QsG2zbTbwfqW7ZXuTjzAcrwL mac@MACui-MacBookPro.local"
 }
 
 variable "environment" {
   description = "A name to describe the environment we're creating."
+}
+
+variable "project" {
+  description = "The name of the project."
+  
 }
 variable "cluster" {
   description = "The name of the ECS cluster."

@@ -17,3 +17,8 @@ variable "mysql_host" {
     default = "localhost"
 }
   
+variable "project" {
+    description = "The name of the project"
+    default = "food-recommendation"
+  
+}

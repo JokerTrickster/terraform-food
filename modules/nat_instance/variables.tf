@@ -6,6 +6,10 @@ variable "environment" {
   description = "The name of the environment"
   type        = string
 }
+variable "project" {
+  description = "The name of the project"
+  default = "food-recommendation"
+}
 
 variable "public_subnets" {
   description = "List of public subnet IDs"

@@ -4,7 +4,7 @@ module "ssm" {
 }
 
 resource "aws_security_group" "utils_sg" {
-  name        = "utils_security_group"
+  name        = "${var.project}-utils-sg"
   description = "Allow SSH access from all IPs"
 
   vpc_id = var.vpc_id
@@ -46,7 +46,7 @@ resource "aws_network_interface" "network_interface" {
   security_groups = [aws_security_group.utils_sg.id]
   
   tags = {
-    Name = "primary_network_interface"
+    Name = "${var.project}_primary_network_interface"
   }
 }
 
@@ -55,7 +55,7 @@ resource "aws_eip" "utils_eip"{
   count = 1
   instance = aws_instance.utils_instance.id
     tags = {
-        Name = "utils-eip"
+        Name = "${var.project}_utils-eip"
     }
 }
 resource "aws_instance" "utils_instance" {
@@ -77,7 +77,7 @@ resource "aws_instance" "utils_instance" {
   user_data = file("${path.module}/templates/user_data.sh")
 
   tags = {
-    Name = "utils-spot"
+    Name = "${var.project}_utils-spot"
   }
 }
 

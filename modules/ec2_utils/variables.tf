@@ -1,3 +1,7 @@
+variable "project"{
+    description = "The project name"
+    default = "food-recommendation"
+}
 variable "environment" {
   description = "The environment to deploy to"
 }

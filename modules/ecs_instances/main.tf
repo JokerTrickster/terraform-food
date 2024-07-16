@@ -144,5 +144,6 @@ data "template_file" "user_data" {
     env_name          = var.environment
     custom_userdata   = var.custom_userdata
     cloudwatch_prefix = var.cloudwatch_prefix
+    project  = var.project
   }
 }

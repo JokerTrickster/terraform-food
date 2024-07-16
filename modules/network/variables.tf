@@ -5,6 +5,11 @@ variable "vpc_cidr" {
 variable "environment" {
   description = "The name of the environment"
 }
+variable "project" {
+  description = "The name of the project"
+  default = "food-recommendation"
+  
+}
 
 variable "destination_cidr_block" {
   default     = "0.0.0.0/0"

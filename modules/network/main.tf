@@ -8,7 +8,7 @@ module "vpc" {
 module "private_subnet" {
   source = "../subnet"
 
-  name               = "${var.environment}_private_subnet"
+  name               = "${var.project}_private_subnet"
   environment        = var.environment
   vpc_id             = module.vpc.id
   cidrs              = var.private_subnet_cidrs
@@ -19,7 +19,7 @@ module "private_subnet" {
 module "public_subnet" {
   source = "../subnet"
 
-  name               = "${var.environment}_public_subnet"
+  name               = "${var.project}_public_subnet"
   environment        = var.environment
   vpc_id             = module.vpc.id
   cidrs              = var.public_subnet_cidrs

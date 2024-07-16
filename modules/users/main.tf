@@ -1,5 +1,5 @@
 resource "aws_iam_user" "ecs_deployer" {
-  name = "ecs_deployer"
+  name = "food_ecs_deployer"
   path = "/ecs/"
 }
 
@@ -8,7 +8,7 @@ resource "aws_iam_user" "ecs_deployer" {
 # the user and allow him only to hand out roles in /ecs/ path. You still need to be careful not
 # to have any roles in there with full admin rights, but no ECS task should have these rights!
 resource "aws_iam_user_policy" "ecs_deployer_policy" {
-  name = "ecs_deployer_policy"
+  name = "food_ecs_deployer_policy"
   user = aws_iam_user.ecs_deployer.name
 
   policy = "${file("ecs_deployer.json")}"

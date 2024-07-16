@@ -1,6 +1,8 @@
 # A name to describe the environment we're creating.
 environment = "dev"
 
+project = "food-recommendation"
+
 # The name of the ECS cluster.
 cluster = "food-recommendation"
 

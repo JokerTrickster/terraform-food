@@ -2,10 +2,10 @@
 //sg_nat_instance
 resource "aws_security_group" "sg_nat_instance" {
     vpc_id = var.vpc_id
-    name = "sg_nat_instance"
+    name = "${var.project}_sg_nat_instance"
 
     tags = {
-        Name = "sg_nat_instance"
+        Name = "${var.project}_sg_nat_instance"
     }
 }
 
@@ -31,7 +31,7 @@ resource "aws_instance" "nat_instance" {
         encrypted = true
     }
     tags = {
-        Name = "nat_instance_spot"
+        Name = "${var.project}_nat_instance_spot"
     }
 }
 
@@ -40,7 +40,7 @@ resource "aws_eip" "nat_instance_eip" {
     instance = aws_instance.nat_instance.id
 
     tags = {
-        Name = "nat_instance_eip"
+        Name = "${var.project}_nat_instance_eip"
     }
 }
 
@@ -114,6 +114,6 @@ resource "aws_network_interface" "primary_network_interface" {
     source_dest_check = false
     description = "Primary network interface for NAT instance"
     tags = {
-        Name = "nat_instance"
+        Name = "${var.project}_nat_instance"
     }
 }

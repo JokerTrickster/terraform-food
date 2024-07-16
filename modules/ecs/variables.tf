@@ -1,6 +1,10 @@
 variable "environment" {
   description = "The name of the environment"
 }
+variable "project" {
+  description = "The project name"
+  default = "food-recommendation"
+}
 
 variable "cluster" {
   description = "The name of the ECS cluster"

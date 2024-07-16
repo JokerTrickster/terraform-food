@@ -3,7 +3,7 @@
 # Some other ECS policy examples http://docs.aws.amazon.com/AmazonECS/latest/developerguide/IAMPolicyExamples.html 
 
 resource "aws_iam_role" "ecs_instance_role" {
-  name = "${var.environment}_ecs_instance_role"
+  name = "${var.project}_ecs_instance_role"
 
   assume_role_policy = <<EOF
 {
@@ -22,7 +22,7 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "ecs" {
-  name = "${var.environment}_ecs_instance_profile"
+  name = "${var.project}_ecs_instance_profile"
   path = "/"
   role = aws_iam_role.ecs_instance_role.name
 }
