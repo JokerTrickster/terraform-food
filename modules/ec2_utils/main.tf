@@ -1,6 +1,7 @@
 module "ssm" {
   source      = "../ssm"
   mysql_host = aws_eip.utils_eip[0].public_ip
+  redis_host = aws_eip.utils_eip[0].public_ip
 }
 
 resource "aws_security_group" "utils_sg" {
@@ -29,6 +30,14 @@ resource "aws_security_group" "utils_sg" {
     cidr_blocks = [var.vpc_cidr]
   }
 
+    // redis port
+  ingress {
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = [var.vpc_cidr]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -42,7 +51,7 @@ resource "aws_security_group" "utils_sg" {
 }
 
 resource "aws_network_interface" "network_interface" {
-  subnet_id   = var.subnet_ids[0]
+  subnet_id   = var.subnet_ids[1]
   security_groups = [aws_security_group.utils_sg.id]
   
   tags = {
@@ -63,9 +72,14 @@ resource "aws_instance" "utils_instance" {
   instance_market_options {
     market_type = "spot"
     spot_options {
-      max_price = 0.0092
+      max_price = 0.0062
     }
   }
+   root_block_device {
+        volume_size = 20
+        volume_type = "gp2"
+        encrypted = true
+    }
   key_name = var.key_name
   network_interface {
     network_interface_id         = aws_network_interface.network_interface.id

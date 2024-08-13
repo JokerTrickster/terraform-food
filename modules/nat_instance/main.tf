@@ -15,7 +15,7 @@ resource "aws_instance" "nat_instance" {
     instance_market_options {
       market_type = "spot"
       spot_options {
-       max_price = 0.0092 
+       max_price = 0.0053 
       }
       
     }

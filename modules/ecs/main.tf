@@ -102,6 +102,26 @@ resource "aws_ecs_task_definition" "task_definition" {
                 {
                     name: "MYSQL_DATABASE",
                     value: "dev_food"
+                },
+                {
+                    name: "REDIS_USER",
+                    value: "food"
+                },
+                {
+                  name: "REDIS_HOST",
+                  value: "devstg_redis.internal_ap-northeast-2"
+                },
+                {
+                  name: "REDIS_PORT",
+                  value: "6379"
+                },
+                {
+                  name: "REDIS_DB",
+                  value: "0"
+                },
+                {
+                  name: "REDIS_PASSWORD",
+                  value: "asdasd123"
                 }
       ]
 

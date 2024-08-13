@@ -22,3 +22,24 @@ variable "project" {
     default = "food-recommendation"
   
 }
+
+
+variable "redis_user" {
+    description = "Redis user"
+    default = "food"  
+}
+
+variable "redis_db" {
+    description = "Redis database"
+    default = "0"
+}
+
+variable "redis_port" {
+    description = "Redis port"
+    default = "6379"
+}
+
+variable "redis_host" {
+    description = "Redis host"
+    default = "localhost"
+}
